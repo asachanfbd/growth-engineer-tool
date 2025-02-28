@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, Typography, CardHeader, CardActions, CardMedia} from '@mui/material';
 import { indigo } from '@mui/material/colors';
 import MetaFieldEdit from './MetaFieldEdit';
+import MetaFieldRepeater from './MetaFieldRepeater';
 
 const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength = 0, isWarning = false, fieldType = 'text' }) => {
     const [editEnabled, setEditEnabled] = useState(false);
@@ -53,7 +54,8 @@ const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength 
                             sx={{ width: 50, marginRight: 1 }}
                             image={data.value}
                             />}
-                    {data.value}
+                    {fieldType == 'text' && data.value}
+                    {fieldType in ['list', 'imageslist'] && <MetaFieldRepeater fields={data.list} label={data.key} />}
                 </Typography>
                 <br />
                 {editEnabled && <MetaFieldEdit data={data} maxAllowed={maxLength} />}

@@ -3,8 +3,6 @@ import './App.css';
 import Stack from '@mui/material/Stack';
 import MetaField from './Components/PageMeta/MetaField';
 
-var chromeconsole = chrome.extension.getBackgroundPage();
-
 function App() {
   const [metadata, setMetadata] = useState({
     title: '',
@@ -23,7 +21,6 @@ function App() {
         },
         (results) => {
           if (results && results[0] && results[0].result) {
-            console.log(results[0].result);
             setMetadata(results[0].result);
           }
         }
@@ -42,11 +39,11 @@ function App() {
         gog_title:{"key": "OG Title", "value": document.querySelector('meta[property="og:title"]')?.getAttribute('content') || '', "isEditable": true},
         hog_description:{"key": "OG Description", "value": document.querySelector('meta[property="og:description"]')?.getAttribute('content') || '', "isEditable": true},
         iog_image:{"key": "OG Image", "value": document.querySelector('meta[property="og:image"]')?.getAttribute('content') || '', "fieldType": "image"},
-        jimages:{"key": "Images", "value":"", "showCopyButton": false, "fieldType":"imageslist", "images": Array.from(document.querySelectorAll('img')).map(img => ({
+        jimages:{"key": "Images", "value":"", "showCopyButton": false, "fieldType":"imageslist", "list": Array.from(document.querySelectorAll('img')).map(img => ({
             src: img.src,
             alt: img.alt,
         }))},
-        klinks:{"key": "Links", "value":"", "showCopyButton": false, "fieldType":"list", "links": Array.from(document.querySelectorAll('a')).map(link => ({
+        klinks:{"key": "Links", "value":"", "showCopyButton": false, "fieldType":"list", "list": Array.from(document.querySelectorAll('a')).map(link => ({
             href: link.href,
             innerText: link.innerText || link.textContent || "~~~Empty~~~",
         }))}
