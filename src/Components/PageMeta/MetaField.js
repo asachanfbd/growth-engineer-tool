@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Card, CardContent, Typography, CardHeader, CardActions, IconButton, ExpandMore, Collapse} from '@mui/material';
+import { Card, CardContent, Typography, CardHeader, CardActions, CardMedia} from '@mui/material';
 import { indigo } from '@mui/material/colors';
 import MetaFieldEdit from './MetaFieldEdit';
 
-const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength = 0 }) => {
+const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength = 0, isWarning = false, fieldType = 'text' }) => {
     const [editEnabled, setEditEnabled] = useState(false);
-    const [expanded, setExpanded] = useState(false);
 
     const handleCopy = (e) => {
+        e.preventDefault();
         navigator.clipboard.writeText(data.value);
         e.target.innerText = 'Copied!';
         let ele = e.target;
@@ -16,12 +16,9 @@ const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength 
         }, 1000);
     };
 
-    const handleEdit = () => {
+    const handleEdit = (e) => {
+        e.preventDefault();
         setEditEnabled(!editEnabled);
-    };
-
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
     };
 
     const [isHovered, setIsHovered] = useState(false);
@@ -35,7 +32,7 @@ const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength 
         >
             <CardHeader
                 title={
-                    <Typography variant="caption" color={(String(data.value).length > maxLength)?"error":"text.secondary"}>
+                    <Typography variant="caption" color={(maxLength != 0 && String(data.value).length > maxLength)?"error":(isWarning?"warning":"text.secondary")}>
                     {data.key} {maxLength > 0 && `(${String(data.value).length}/${maxLength})`}
                     </Typography>}
                 disableTypography={true}
@@ -50,7 +47,12 @@ const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength 
                 }
                 sx={{ marginBottom: 0, paddingBottom: "10px" }} />
             <CardContent sx={{ height: '100%', marginTop: 0, paddingTop: 0, paddingBottom: "0 !important" }}>
-                <Typography variant="subtitle2" component="div">
+                <Typography variant="subtitle2" component="div"  sx={{ display: 'flex' }}>
+                    {fieldType === 'image' && <CardMedia
+                            component="img"
+                            sx={{ width: 50, marginRight: 1 }}
+                            image={data.value}
+                            />}
                     {data.value}
                 </Typography>
                 <br />

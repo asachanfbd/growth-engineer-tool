@@ -3372,6 +3372,200 @@ const cardHeaderClasses = (0,_mui_utils_generateUtilityClasses__WEBPACK_IMPORTED
 
 /***/ }),
 
+/***/ "./node_modules/@mui/material/CardMedia/CardMedia.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@mui/material/CardMedia/CardMedia.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
+/* harmony import */ var _mui_utils_chainPropTypes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/utils/chainPropTypes */ "./node_modules/@mui/utils/esm/chainPropTypes/chainPropTypes.js");
+/* harmony import */ var _mui_utils_composeClasses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/utils/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var _zero_styled_index_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../zero-styled/index.js */ "./node_modules/@mui/material/styles/styled.js");
+/* harmony import */ var _DefaultPropsProvider_index_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../DefaultPropsProvider/index.js */ "./node_modules/@mui/material/DefaultPropsProvider/DefaultPropsProvider.js");
+/* harmony import */ var _cardMediaClasses_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cardMediaClasses.js */ "./node_modules/@mui/material/CardMedia/cardMediaClasses.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
+
+
+
+
+
+
+
+
+
+const useUtilityClasses = ownerState => {
+  const {
+    classes,
+    isMediaComponent,
+    isImageComponent
+  } = ownerState;
+  const slots = {
+    root: ['root', isMediaComponent && 'media', isImageComponent && 'img']
+  };
+  return (0,_mui_utils_composeClasses__WEBPACK_IMPORTED_MODULE_3__["default"])(slots, _cardMediaClasses_js__WEBPACK_IMPORTED_MODULE_4__.getCardMediaUtilityClass, classes);
+};
+const CardMediaRoot = (0,_zero_styled_index_js__WEBPACK_IMPORTED_MODULE_5__["default"])('div', {
+  name: 'MuiCardMedia',
+  slot: 'Root',
+  overridesResolver: (props, styles) => {
+    const {
+      ownerState
+    } = props;
+    const {
+      isMediaComponent,
+      isImageComponent
+    } = ownerState;
+    return [styles.root, isMediaComponent && styles.media, isImageComponent && styles.img];
+  }
+})({
+  display: 'block',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
+  variants: [{
+    props: {
+      isMediaComponent: true
+    },
+    style: {
+      width: '100%'
+    }
+  }, {
+    props: {
+      isImageComponent: true
+    },
+    style: {
+      objectFit: 'cover'
+    }
+  }]
+});
+const MEDIA_COMPONENTS = ['video', 'audio', 'picture', 'iframe', 'img'];
+const IMAGE_COMPONENTS = ['picture', 'img'];
+const CardMedia = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function CardMedia(inProps, ref) {
+  const props = (0,_DefaultPropsProvider_index_js__WEBPACK_IMPORTED_MODULE_6__.useDefaultProps)({
+    props: inProps,
+    name: 'MuiCardMedia'
+  });
+  const {
+    children,
+    className,
+    component = 'div',
+    image,
+    src,
+    style,
+    ...other
+  } = props;
+  const isMediaComponent = MEDIA_COMPONENTS.includes(component);
+  const composedStyle = !isMediaComponent && image ? {
+    backgroundImage: `url("${image}")`,
+    ...style
+  } : style;
+  const ownerState = {
+    ...props,
+    component,
+    isMediaComponent,
+    isImageComponent: IMAGE_COMPONENTS.includes(component)
+  };
+  const classes = useUtilityClasses(ownerState);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CardMediaRoot, {
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])(classes.root, className),
+    as: component,
+    role: !isMediaComponent && image ? 'img' : undefined,
+    ref: ref,
+    style: composedStyle,
+    ownerState: ownerState,
+    src: isMediaComponent ? image || src : undefined,
+    ...other,
+    children: children
+  });
+});
+ true ? CardMedia.propTypes /* remove-proptypes */ = {
+  // ┌────────────────────────────── Warning ──────────────────────────────┐
+  // │ These PropTypes are generated from the TypeScript type definitions. │
+  // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+  // └─────────────────────────────────────────────────────────────────────┘
+  /**
+   * The content of the component.
+   */
+  children: (0,_mui_utils_chainPropTypes__WEBPACK_IMPORTED_MODULE_7__["default"])((prop_types__WEBPACK_IMPORTED_MODULE_8___default().node), props => {
+    if (!props.children && !props.image && !props.src && !props.component) {
+      return new Error('MUI: Either `children`, `image`, `src` or `component` prop must be specified.');
+    }
+    return null;
+  }),
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().object),
+  /**
+   * @ignore
+   */
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().string),
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().elementType),
+  /**
+   * Image to be displayed as a background image.
+   * Either `image` or `src` prop must be specified.
+   * Note that caller must specify height otherwise the image will not be visible.
+   */
+  image: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().string),
+  /**
+   * An alias for `image` property.
+   * Available only with media components.
+   * Media components: `video`, `audio`, `picture`, `iframe`, `img`.
+   */
+  src: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().string),
+  /**
+   * @ignore
+   */
+  style: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().object),
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: prop_types__WEBPACK_IMPORTED_MODULE_8___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_8___default().arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_8___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_8___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_8___default().object), (prop_types__WEBPACK_IMPORTED_MODULE_8___default().bool)])), (prop_types__WEBPACK_IMPORTED_MODULE_8___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_8___default().object)])
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardMedia);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/CardMedia/cardMediaClasses.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@mui/material/CardMedia/cardMediaClasses.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   getCardMediaUtilityClass: () => (/* binding */ getCardMediaUtilityClass)
+/* harmony export */ });
+/* harmony import */ var _mui_utils_generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/utils/generateUtilityClasses */ "./node_modules/@mui/utils/esm/generateUtilityClasses/generateUtilityClasses.js");
+/* harmony import */ var _mui_utils_generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/utils/generateUtilityClass */ "./node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js");
+
+
+function getCardMediaUtilityClass(slot) {
+  return (0,_mui_utils_generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__["default"])('MuiCardMedia', slot);
+}
+const cardMediaClasses = (0,_mui_utils_generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__["default"])('MuiCardMedia', ['root', 'media', 'img']);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (cardMediaClasses);
+
+/***/ }),
+
 /***/ "./node_modules/@mui/material/DefaultPropsProvider/DefaultPropsProvider.js":
 /*!*********************************************************************************!*\
   !*** ./node_modules/@mui/material/DefaultPropsProvider/DefaultPropsProvider.js ***!
@@ -42202,17 +42396,14 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-
-
-
-
-// var chromeconsole = chrome.extension.getBackgroundPage();
-
+var chromeconsole = chrome.extension.getBackgroundPage();
 function App() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       title: '',
       description: '',
-      keywords: ''
+      lang: '',
+      url: '',
+      canonical: ''
     }),
     _useState2 = _slicedToArray(_useState, 2),
     metadata = _useState2[0],
@@ -42229,6 +42420,7 @@ function App() {
         "function": getPageMetadata
       }, function (results) {
         if (results && results[0] && results[0].result) {
+          console.log(results[0].result);
           setMetadata(results[0].result);
         }
       });
@@ -42236,76 +42428,94 @@ function App() {
   }, []);
   function getPageMetadata() {
     var _document$querySelect, _document$querySelect2, _document$querySelect3, _document$querySelect4, _document$querySelect5, _document$querySelect6, _document$querySelect7;
-    var title = {
-      "key": "Page Title",
-      "value": document.title
+    var metadata = {
+      atitle: {
+        "key": "Page Title",
+        "value": document.title,
+        "isEditable": true,
+        "maxLength": 60,
+        "showCopyButton": true
+      },
+      bdescription: {
+        "key": "Meta Description",
+        "value": ((_document$querySelect = document.querySelector('meta[name="description"]')) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.getAttribute('content')) || '',
+        "isEditable": true,
+        "maxLength": 160
+      },
+      clang: {
+        "key": "Lang",
+        "value": document.querySelector('html').getAttribute('lang')
+      },
+      durl: {
+        "key": "Page URL",
+        "value": document.URL
+      },
+      ecanonical: {
+        "key": "Canonical URL",
+        "value": ((_document$querySelect2 = document.querySelector('link[rel="canonical"]')) === null || _document$querySelect2 === void 0 ? void 0 : _document$querySelect2.getAttribute('href')) || '',
+        "isWarning": ((_document$querySelect3 = document.querySelector('link[rel="canonical"]')) === null || _document$querySelect3 === void 0 ? void 0 : _document$querySelect3.getAttribute('href')) !== document.URL
+      },
+      frobots: {
+        "key": "Robots",
+        "value": ((_document$querySelect4 = document.querySelector('meta[name="robots"]')) === null || _document$querySelect4 === void 0 ? void 0 : _document$querySelect4.getAttribute('content')) || ''
+      },
+      gog_title: {
+        "key": "OG Title",
+        "value": ((_document$querySelect5 = document.querySelector('meta[property="og:title"]')) === null || _document$querySelect5 === void 0 ? void 0 : _document$querySelect5.getAttribute('content')) || '',
+        "isEditable": true
+      },
+      hog_description: {
+        "key": "OG Description",
+        "value": ((_document$querySelect6 = document.querySelector('meta[property="og:description"]')) === null || _document$querySelect6 === void 0 ? void 0 : _document$querySelect6.getAttribute('content')) || '',
+        "isEditable": true
+      },
+      iog_image: {
+        "key": "OG Image",
+        "value": ((_document$querySelect7 = document.querySelector('meta[property="og:image"]')) === null || _document$querySelect7 === void 0 ? void 0 : _document$querySelect7.getAttribute('content')) || '',
+        "fieldType": "image"
+      },
+      jimages: {
+        "key": "Images",
+        "value": "",
+        "showCopyButton": false,
+        "fieldType": "imageslist",
+        "images": Array.from(document.querySelectorAll('img')).map(function (img) {
+          return {
+            src: img.src,
+            alt: img.alt
+          };
+        })
+      },
+      klinks: {
+        "key": "Links",
+        "value": "",
+        "showCopyButton": false,
+        "fieldType": "list",
+        "links": Array.from(document.querySelectorAll('a')).map(function (link) {
+          return {
+            href: link.href,
+            innerText: link.innerText || link.textContent || "~~~Empty~~~"
+          };
+        })
+      }
     };
-    var description = {
-      "key": "Meta Description",
-      "value": ((_document$querySelect = document.querySelector('meta[name="description"]')) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.getAttribute('content')) || ''
-    };
-    var lang = document.querySelector('html').getAttribute('lang');
-    var url = document.URL;
-    var canonical = ((_document$querySelect2 = document.querySelector('link[rel="canonical"]')) === null || _document$querySelect2 === void 0 ? void 0 : _document$querySelect2.getAttribute('href')) || '';
-    var robots = ((_document$querySelect3 = document.querySelector('meta[name="robots"]')) === null || _document$querySelect3 === void 0 ? void 0 : _document$querySelect3.getAttribute('content')) || '';
-    var author = ((_document$querySelect4 = document.querySelector('meta[name="author"]')) === null || _document$querySelect4 === void 0 ? void 0 : _document$querySelect4.getAttribute('content')) || '';
-    var ogTitle = ((_document$querySelect5 = document.querySelector('meta[property="og:title"]')) === null || _document$querySelect5 === void 0 ? void 0 : _document$querySelect5.getAttribute('content')) || '';
-    var ogDescription = ((_document$querySelect6 = document.querySelector('meta[property="og:description"]')) === null || _document$querySelect6 === void 0 ? void 0 : _document$querySelect6.getAttribute('content')) || '';
-    var ogImage = ((_document$querySelect7 = document.querySelector('meta[property="og:image"]')) === null || _document$querySelect7 === void 0 ? void 0 : _document$querySelect7.getAttribute('content')) || '';
-    var images = Array.from(document.querySelectorAll('img')).map(function (img) {
-      return {
-        src: img.src,
-        alt: img.alt
-      };
-    });
-    var links = Array.from(document.querySelectorAll('a')).map(function (link) {
-      return {
-        href: link.href,
-        innerText: link.innerText || link.textContent || "~~~Empty~~~"
-      };
-    });
-    return {
-      title: title,
-      description: description,
-      lang: lang,
-      url: url,
-      canonical: canonical,
-      robots: robots,
-      author: author,
-      ogTitle: ogTitle,
-      ogDescription: ogDescription,
-      ogImage: ogImage,
-      images: images,
-      links: links
-    };
+    return metadata;
   }
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "metadata-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Page Metadata"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material_Stack__WEBPACK_IMPORTED_MODULE_3__["default"], {
     spacing: 2
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_PageMeta_MetaField__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    data: metadata.title,
-    isEditable: true,
-    maxLength: 60
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_PageMeta_MetaField__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    data: metadata.description,
-    isEditable: true,
-    maxLength: 160
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Lang:"), " ", metadata.lang), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "URL:"), " ", metadata.url), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Canonical:"), " ", metadata.canonical), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Robots:"), " ", metadata.robots), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Author:"), " ", metadata.author), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "OG Title:"), " ", metadata.ogTitle), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "OG Description:"), " ", metadata.ogDescription), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "OG Image:"), " ", metadata.ogImage), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Images:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ol", null, metadata.images && Array.isArray(metadata.images) ? metadata.images.map(function (image, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
-      key: index
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-      src: image.src,
-      alt: image.alt,
-      width: "50px"
-    }));
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "No images found")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Links:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ol", null, metadata.links && Array.isArray(metadata.links) ? metadata.links.map(function (link, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
-      key: index
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-      href: link.href
-    }, link.innerText));
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "No links found")));
+  }, Object.keys(metadata).map(function (key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Components_PageMeta_MetaField__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      key: key,
+      data: metadata[key],
+      isEditable: metadata[key].isEditable || false,
+      showCopyButton: metadata[key].showCopyButton || true,
+      maxLength: metadata[key].maxLength || 0,
+      isWarning: metadata[key].isWarning || false,
+      fieldType: metadata[key].fieldType || 'text'
+    });
+  })));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
@@ -42329,6 +42539,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardActions/CardActions.js");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardContent/CardContent.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardMedia/CardMedia.js");
 /* harmony import */ var _mui_material_colors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/colors */ "./node_modules/@mui/material/colors/indigo.js");
 /* harmony import */ var _MetaFieldEdit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MetaFieldEdit */ "./src/Components/PageMeta/MetaFieldEdit.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
@@ -42348,16 +42559,17 @@ var MetaField = function MetaField(_ref) {
     _ref$showCopyButton = _ref.showCopyButton,
     showCopyButton = _ref$showCopyButton === void 0 ? true : _ref$showCopyButton,
     _ref$maxLength = _ref.maxLength,
-    maxLength = _ref$maxLength === void 0 ? 0 : _ref$maxLength;
+    maxLength = _ref$maxLength === void 0 ? 0 : _ref$maxLength,
+    _ref$isWarning = _ref.isWarning,
+    isWarning = _ref$isWarning === void 0 ? false : _ref$isWarning,
+    _ref$fieldType = _ref.fieldType,
+    fieldType = _ref$fieldType === void 0 ? 'text' : _ref$fieldType;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     editEnabled = _useState2[0],
     setEditEnabled = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    expanded = _useState4[0],
-    setExpanded = _useState4[1];
   var handleCopy = function handleCopy(e) {
+    e.preventDefault();
     navigator.clipboard.writeText(data.value);
     e.target.innerText = 'Copied!';
     var ele = e.target;
@@ -42365,16 +42577,14 @@ var MetaField = function MetaField(_ref) {
       ele.innerText = 'Copy ' + data.key;
     }, 1000);
   };
-  var handleEdit = function handleEdit() {
+  var handleEdit = function handleEdit(e) {
+    e.preventDefault();
     setEditEnabled(!editEnabled);
   };
-  var handleExpandClick = function handleExpandClick() {
-    setExpanded(!expanded);
-  };
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    isHovered = _useState6[0],
-    setIsHovered = _useState6[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isHovered = _useState4[0],
+    setIsHovered = _useState4[1];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
     variant: "outlined",
     color: String(data.value).length > maxLength ? "error" : "text.secondary",
@@ -42387,7 +42597,7 @@ var MetaField = function MetaField(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
     title: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
       variant: "caption",
-      color: String(data.value).length > maxLength ? "error" : "text.secondary"
+      color: maxLength != 0 && String(data.value).length > maxLength ? "error" : isWarning ? "warning" : "text.secondary"
     }, data.key, " ", maxLength > 0 && "(".concat(String(data.value).length, "/").concat(maxLength, ")")),
     disableTypography: true,
     action: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -42423,8 +42633,18 @@ var MetaField = function MetaField(_ref) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
     variant: "subtitle2",
-    component: "div"
-  }, data.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), editEnabled && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MetaFieldEdit__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    component: "div",
+    sx: {
+      display: 'flex'
+    }
+  }, fieldType === 'image' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    component: "img",
+    sx: {
+      width: 50,
+      marginRight: 1
+    },
+    image: data.value
+  }), data.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), editEnabled && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MetaFieldEdit__WEBPACK_IMPORTED_MODULE_1__["default"], {
     data: data,
     maxAllowed: maxLength
   })));
