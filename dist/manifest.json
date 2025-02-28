@@ -1,7 +1,14 @@
 {
     "manifest_version": 3,
-    "name": "Meta Extractor",
+    "name": "Growth Engineering Tool",
     "version": "1.0",
+    "content_scripts": [
+        {
+          "matches": ["https://*/*", "http://*/*"],
+          "js": ["static/js/main.js"],
+          "run_at": "document_end"
+        }
+    ],
     "action": {
       "default_popup": "index.html"
     },

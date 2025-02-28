@@ -1,4 +1,4 @@
-# Growth Engineer's Tool
+# Growth Engineer's Toolkit
 
 An all in one tool for Growth Engineers.
 
