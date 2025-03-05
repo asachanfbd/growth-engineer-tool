@@ -1,23 +1,29 @@
 {
-    "manifest_version": 3,
-    "name": "Growth Engineering Tool",
-    "version": "1.0",
-    "content_scripts": [
-        {
-          "matches": ["https://*/*", "http://*/*"],
-          "js": ["static/js/main.js"],
-          "run_at": "document_end"
-        }
-    ],
-    "action": {
-      "default_popup": "index.html"
-    },
-    "permissions": [
-      "activeTab",
-      "scripting"
-    ],
-    "web_accessible_resources": [{
-      "resources": ["static/js/main.js"],
-      "matches": ["<all_urls>"]
-    }]
+  "name": "Growth Toolkit",
+  "version": "1.0",
+  "manifest_version": 3,
+  "host_permissions": ["https://*/*", "http://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["static/js/main.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "icons": {
+      "16": "static/images/growth-toolkit.png",
+      "48": "static/images/growth-toolkit.png",
+      "128": "static/images/growth-toolkit.png"
+  },
+  "web_accessible_resources": [{
+    "resources": ["static/js/main.js"],
+    "matches": ["https://*/*", "http://*/*"]
+  }]
 }

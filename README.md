@@ -3,7 +3,8 @@
 An all in one tool for Growth Engineers.
 
 - Meta data explorer 
-  - Title & Description
+  - ✅ Title
+  - ✅ Meta Description
   - HTML Lang
   - URL
   - Canonical Tag

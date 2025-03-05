@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { Card, CardContent, Typography, CardHeader, CardActions, IconButton, ExpandMore, Collapse} from '@mui/material';
+import { Card, CardContent, Typography, CardHeader, CardActions, CardMedia} from '@mui/material';
 import { indigo } from '@mui/material/colors';
 import MetaFieldEdit from './MetaFieldEdit';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import Tooltip from '@mui/material/Tooltip';
+import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded';
 
-const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength = 0 }) => {
+const MetaTextField = ({ data, isEditable = false, showCopyButton = true, maxLength = 0, isWarning = false }) => {
     const [editEnabled, setEditEnabled] = useState(false);
-    const [expanded, setExpanded] = useState(false);
 
     const handleCopy = (e) => {
+        e.preventDefault();
         navigator.clipboard.writeText(data.value);
         e.target.innerText = 'Copied!';
         let ele = e.target;
@@ -16,12 +19,9 @@ const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength 
         }, 1000);
     };
 
-    const handleEdit = () => {
+    const handleEdit = (e) => {
+        e.preventDefault();
         setEditEnabled(!editEnabled);
-    };
-
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
     };
 
     const [isHovered, setIsHovered] = useState(false);
@@ -35,7 +35,7 @@ const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength 
         >
             <CardHeader
                 title={
-                    <Typography variant="caption" color={(String(data.value).length > maxLength)?"error":"text.secondary"}>
+                    <Typography variant="caption" color={(maxLength != 0 && String(data.value).length > maxLength)?"error":(isWarning?"warning":"text.secondary")}>
                     {data.key} {maxLength > 0 && `(${String(data.value).length}/${maxLength})`}
                     </Typography>}
                 disableTypography={true}
@@ -44,13 +44,13 @@ const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength 
                         marginBottom: 0,
                         visibility: isHovered ? 'visible' : 'hidden'
                     }}>
-                        {isEditable && <a href="#" onClick={handleEdit} style={{ textDecoration: "none", color: indigo[500]}}>Create New</a>}
-                        {showCopyButton && <a href="#" onClick={handleCopy} style={{ textDecoration: "none", color: indigo[500]}}>Copy {data.key}</a>} 
+                        {isEditable && <a href="#" onClick={handleEdit} style={{ fontSize: 14, textDecoration: "none", color: indigo[500]}}><Tooltip title="Open Local Editor" placement="bottom-end"><EditNoteRoundedIcon fontSize='inherit' /></Tooltip></a>}
+                        {showCopyButton && <a href="#" onClick={handleCopy} style={{ fontSize: 11, textDecoration: "none", color: indigo[500]}}><Tooltip title="Copy Content" placement="bottom-end"><ContentCopyIcon fontSize="inherit" /></Tooltip></a>} 
                     </CardActions>
                 }
                 sx={{ marginBottom: 0, paddingBottom: "10px" }} />
             <CardContent sx={{ height: '100%', marginTop: 0, paddingTop: 0, paddingBottom: "0 !important" }}>
-                <Typography variant="subtitle2" component="div">
+                <Typography variant="subtitle2" component="div"  sx={{ display: 'flex' }}>
                     {data.value}
                 </Typography>
                 <br />
@@ -60,4 +60,4 @@ const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength 
     );
 };
 
-export default MetaField;
+export default MetaTextField;
