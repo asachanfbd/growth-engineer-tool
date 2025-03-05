@@ -2,26 +2,26 @@
 
 An all in one tool for Growth Engineers.
 
-- Meta data explorer 
+- Meta data explorer
   - ✅ Title
   - ✅ Meta Description
-  - HTML Lang
-  - URL
-  - Canonical Tag
-  - Robots
+  - ✅ HTML Lang
+  - ✅ URL
+  - ✅ Canonical Tag
+  - ✅ Robots
   - Viewport
   - Charset
   - Word Count
-  - OG - Title, Description, Image
+  - ✅ OG - Title, Description, Image
   - Twitter Tags - Card, Title, Description, Image, Site, Creator, URL & Domain
-  - Images details on page with or without alt
-  - Links - Broken, Internal & External
+  - ✅ Images details on page with or without alt
+  - ✅ Links - Broken, Internal & External
   - Social Graph - Social Previews
   - Schema Markup
   - Pagespeed insight link
   - ahref website authority checker link
-- Meta data editor(Just edit and copy - tool will validate the input against applicable bounds)
-  - Title & Description
+- ✅ Meta data editor(Just edit and copy - tool will validate the input against applicable bounds)
+  - ✅ Title & Description
   - Schema Markeup maker
   - OG:Image previewer(with new image - link or upload)
 - Headings heirarchy explorer
