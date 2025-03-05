@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Card, CardContent, Typography, CardHeader, CardActions, CardMedia} from '@mui/material';
 import { indigo } from '@mui/material/colors';
 import MetaFieldEdit from './MetaFieldEdit';
-import MetaFieldRepeater from './MetaFieldRepeater';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import Tooltip from '@mui/material/Tooltip';
+import EditNoteRoundedIcon from '@mui/icons-material/EditNoteRounded';
 
-const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength = 0, isWarning = false, fieldType = 'text' }) => {
+const MetaTextField = ({ data, isEditable = false, showCopyButton = true, maxLength = 0, isWarning = false }) => {
     const [editEnabled, setEditEnabled] = useState(false);
 
     const handleCopy = (e) => {
@@ -42,20 +44,14 @@ const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength 
                         marginBottom: 0,
                         visibility: isHovered ? 'visible' : 'hidden'
                     }}>
-                        {isEditable && <a href="#" onClick={handleEdit} style={{ textDecoration: "none", color: indigo[500]}}>Create New</a>}
-                        {showCopyButton && <a href="#" onClick={handleCopy} style={{ textDecoration: "none", color: indigo[500]}}>Copy {data.key}</a>} 
+                        {isEditable && <a href="#" onClick={handleEdit} style={{ fontSize: 14, textDecoration: "none", color: indigo[500]}}><Tooltip title="Open Local Editor" placement="bottom-end"><EditNoteRoundedIcon fontSize='inherit' /></Tooltip></a>}
+                        {showCopyButton && <a href="#" onClick={handleCopy} style={{ fontSize: 11, textDecoration: "none", color: indigo[500]}}><Tooltip title="Copy Content" placement="bottom-end"><ContentCopyIcon fontSize="inherit" /></Tooltip></a>} 
                     </CardActions>
                 }
                 sx={{ marginBottom: 0, paddingBottom: "10px" }} />
             <CardContent sx={{ height: '100%', marginTop: 0, paddingTop: 0, paddingBottom: "0 !important" }}>
                 <Typography variant="subtitle2" component="div"  sx={{ display: 'flex' }}>
-                    {fieldType === 'image' && <CardMedia
-                            component="img"
-                            sx={{ width: 50, marginRight: 1 }}
-                            image={data.value}
-                            />}
-                    {fieldType == 'text' && data.value}
-                    {fieldType in ['list', 'imageslist'] && <MetaFieldRepeater fields={data.list} label={data.key} />}
+                    {data.value}
                 </Typography>
                 <br />
                 {editEnabled && <MetaFieldEdit data={data} maxAllowed={maxLength} />}
@@ -64,4 +60,4 @@ const MetaField = ({ data, isEditable = false, showCopyButton = true, maxLength 
     );
 };
 
-export default MetaField;
+export default MetaTextField;

@@ -21,7 +21,8 @@ const MetaFieldEdit = ({ data, maxAllowed = 0 }) => {
     };
 
     return (
-        <div style={{paddingBottom: "10px"}} >
+        <div style={{paddingBottom: "10px", fontSize: '12px'}} >
+            This edit is just to help you re-write text within bounds, it won't be updated to the webpage. You can copy and update once you are done.
             <TextareaAutosize
                 onChange={handleChange}
                 minRows={2}
